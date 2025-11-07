@@ -49,11 +49,11 @@
       padding: 8px 12px;
       display: flex;
       flex-direction: column;
-      align-items: center; /* gambar & tombol di tengah */
+      align-items: center;
     }
 
     .gallery-item img {
-      width: 100vh;        /* sesuai permintaan */
+      width: 100vh;
       max-width: 100%;
       height: auto;
       border-radius: 8px;
@@ -76,21 +76,6 @@
       transition: opacity .15s;
     }
     .image-indicator.visible { opacity: 1; }
-
-    .zoom-btn {
-      margin-top: 8px;
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      border: none;
-      background: rgba(17,24,39,0.85);
-      color: #fff;
-      display: flex;               /* icon tepat di tengah */
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      cursor: pointer;
-    }
 
     .back-to-top {
       position: fixed;
@@ -188,81 +173,11 @@
 
   <main class="gallery">
     <!-- Gambar 1–15 -->
-    <div class="gallery-item">
-      <span class="image-indicator">1 / 15</span>
-      <img src="image/1.png" alt="Asih Dwipa Incense katalog 1" loading="lazy" data-index="1" />
-      <button class="zoom-btn" type="button" aria-label="Perbesar gambar 1">⤢</button>
-    </div>
-    <div class="gallery-item">
-      <span class="image-indicator">2 / 15</span>
-      <img src="image/2.png" alt="Asih Dwipa Incense katalog 2" loading="lazy" data-index="2" />
-      <button class="zoom-btn" type="button" aria-label="Perbesar gambar 2">⤢</button>
-    </div>
-    <div class="gallery-item">
-      <span class="image-indicator">3 / 15</span>
-      <img src="image/3.png" alt="Asih Dwipa Incense katalog 3" loading="lazy" data-index="3" />
-      <button class="zoom-btn" type="button" aria-label="Perbesar gambar 3">⤢</button>
-    </div>
-    <div class="gallery-item">
-      <span class="image-indicator">4 / 15</span>
-      <img src="image/4.png" alt="Asih Dwipa Incense katalog 4" loading="lazy" data-index="4" />
-      <button class="zoom-btn" type="button" aria-label="Perbesar gambar 4">⤢</button>
-    </div>
-    <div class="gallery-item">
-      <span class="image-indicator">5 / 15</span>
-      <img src="image/5.png" alt="Asih Dwipa Incense katalog 5" loading="lazy" data-index="5" />
-      <button class="zoom-btn" type="button" aria-label="Perbesar gambar 5">⤢</button>
-    </div>
-    <div class="gallery-item">
-      <span class="image-indicator">6 / 15</span>
-      <img src="image/6.png" alt="Asih Dwipa Incense katalog 6" loading="lazy" data-index="6" />
-      <button class="zoom-btn" type="button" aria-label="Perbesar gambar 6">⤢</button>
-    </div>
-    <div class="gallery-item">
-      <span class="image-indicator">7 / 15</span>
-      <img src="image/7.png" alt="Asih Dwipa Incense katalog 7" loading="lazy" data-index="7" />
-      <button class="zoom-btn" type="button" aria-label="Perbesar gambar 7">⤢</button>
-    </div>
-    <div class="gallery-item">
-      <span class="image-indicator">8 / 15</span>
-      <img src="image/8.png" alt="Asih Dwipa Incense katalog 8" loading="lazy" data-index="8" />
-      <button class="zoom-btn" type="button" aria-label="Perbesar gambar 8">⤢</button>
-    </div>
-    <div class="gallery-item">
-      <span class="image-indicator">9 / 15</span>
-      <img src="image/9.png" alt="Asih Dwipa Incense katalog 9" loading="lazy" data-index="9" />
-      <button class="zoom-btn" type="button" aria-label="Perbesar gambar 9">⤢</button>
-    </div>
-    <div class="gallery-item">
-      <span class="image-indicator">10 / 15</span>
-      <img src="image/10.png" alt="Asih Dwipa Incense katalog 10" loading="lazy" data-index="10" />
-      <button class="zoom-btn" type="button" aria-label="Perbesar gambar 10">⤢</button>
-    </div>
-    <div class="gallery-item">
-      <span class="image-indicator">11 / 15</span>
-      <img src="image/11.png" alt="Asih Dwipa Incense katalog 11" loading="lazy" data-index="11" />
-      <button class="zoom-btn" type="button" aria-label="Perbesar gambar 11">⤢</button>
-    </div>
-    <div class="gallery-item">
-      <span class="image-indicator">12 / 15</span>
-      <img src="image/12.png" alt="Asih Dwipa Incense katalog 12" loading="lazy" data-index="12" />
-      <button class="zoom-btn" type="button" aria-label="Perbesar gambar 12">⤢</button>
-    </div>
-    <div class="gallery-item">
-      <span class="image-indicator">13 / 15</span>
-      <img src="image/13.png" alt="Asih Dwipa Incense katalog 13" loading="lazy" data-index="13" />
-      <button class="zoom-btn" type="button" aria-label="Perbesar gambar 13">⤢</button>
-    </div>
-    <div class="gallery-item">
-      <span class="image-indicator">14 / 15</span>
-      <img src="image/14.png" alt="Asih Dwipa Incense katalog 14" loading="lazy" data-index="14" />
-      <button class="zoom-btn" type="button" aria-label="Perbesar gambar 14">⤢</button>
-    </div>
-    <div class="gallery-item">
-      <span class="image-indicator">15 / 15</span>
-      <img src="image/15.png" alt="Asih Dwipa Incense katalog 15" loading="lazy" data-index="15" />
-      <button class="zoom-btn" type="button" aria-label="Perbesar gambar 15">⤢</button>
-    </div>
+    ${Array.from({ length: 15 }, (_, i) => `
+      <div class="gallery-item">
+        <span class="image-indicator">${i + 1} / 15</span>
+        <img src="image/${i + 1}.png" alt="Asih Dwipa Incense katalog ${i + 1}" loading="lazy" data-index="${i + 1}" />
+      </div>`).join('')}
   </main>
 
   <footer>
@@ -297,10 +212,8 @@
 
     let curScale=1, curX=0, curY=0, startX=0, startY=0, initScale=1, initDist=0, isPan=false;
 
-    const apply = () => {
-      modalImg.style.transform = `translate(${curX}px,${curY}px) scale(${curScale})`;
-    };
-    const reset = () => { curScale=1; curX=0; curY=0; apply(); };
+    const apply = () => modalImg.style.transform = `translate(${curX}px,${curY}px) scale(${curScale})`;
+    const reset = () => { curScale=1; curX=curY=0; apply(); };
     const dist = (t1,t2) => Math.hypot(t2.clientX-t1.clientX, t2.clientY-t1.clientY);
 
     function openModal(src, index){
@@ -315,7 +228,6 @@
     modalClose.addEventListener('click', closeModal);
     document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
 
-    // Pinch & pan modal
     modalImg.addEventListener('touchstart', e => {
       if (e.touches.length === 2) {
         e.preventDefault();
@@ -342,63 +254,40 @@
     }, {passive:false});
     modalImg.addEventListener('touchend', () => { isPan = false; });
 
-    // Long press indicator + double tap + zoom button
     imgs.forEach(img => {
-      const item = img.closest('.gallery-item');
-      const indicator = item.querySelector('.image-indicator');
-      const zoomBtn = item.querySelector('.zoom-btn');
-      let timer;
-      let lastTap = 0;
+      const indicator = img.previousElementSibling;
+      let timer, lastTap = 0;
 
       img.addEventListener('touchstart', () => {
         timer = setTimeout(() => indicator.classList.add('visible'), 500);
       }, {passive:true});
-
       const clearIndicator = () => {
         clearTimeout(timer);
         indicator.classList.remove('visible');
       };
-
       img.addEventListener('touchend', e => {
         clearIndicator();
         const now = Date.now();
-        if (now - lastTap < 300) {
-          openModal(img.src, img.dataset.index);
-        }
+        if (now - lastTap < 300) openModal(img.src, img.dataset.index);
         lastTap = now;
       });
-
       img.addEventListener('touchcancel', clearIndicator);
-
       img.addEventListener('dblclick', e => {
         e.preventDefault();
         openModal(img.src, img.dataset.index);
       });
-
-      if (zoomBtn) {
-        zoomBtn.addEventListener('click', e => {
-          e.stopPropagation();
-          openModal(img.src, img.dataset.index);
-        });
-      }
     });
 
-    // Back to Top hanya muncul kalau gambar pertama tidak kelihatan
     if ('IntersectionObserver' in window && firstItem && backToTopBtn) {
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            backToTopBtn.classList.remove('visible');
-          } else {
-            backToTopBtn.classList.add('visible');
-          }
+          backToTopBtn.classList.toggle('visible', !entry.isIntersecting);
         });
       }, { threshold: 0.6 });
       observer.observe(firstItem);
     } else {
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 200) backToTopBtn.classList.add('visible');
-        else backToTopBtn.classList.remove('visible');
+        backToTopBtn.classList.toggle('visible', window.scrollY > 200);
       });
     }
   })();
