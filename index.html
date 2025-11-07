@@ -173,20 +173,28 @@
 
   <main class="gallery">
     <!-- Gambar 1–15 -->
-    ${Array.from({ length: 15 }, (_, i) => `
-      <div class="gallery-item">
-        <span class="image-indicator">${i + 1} / 15</span>
-        <img src="image/${i + 1}.png" alt="Asih Dwipa Incense katalog ${i + 1}" loading="lazy" data-index="${i + 1}" />
-      </div>`).join('')}
+    <div class="gallery-item"><span class="image-indicator">1 / 15</span><img src="image/1.png" alt="Katalog 1" data-index="1"></div>
+    <div class="gallery-item"><span class="image-indicator">2 / 15</span><img src="image/2.png" alt="Katalog 2" data-index="2"></div>
+    <div class="gallery-item"><span class="image-indicator">3 / 15</span><img src="image/3.png" alt="Katalog 3" data-index="3"></div>
+    <div class="gallery-item"><span class="image-indicator">4 / 15</span><img src="image/4.png" alt="Katalog 4" data-index="4"></div>
+    <div class="gallery-item"><span class="image-indicator">5 / 15</span><img src="image/5.png" alt="Katalog 5" data-index="5"></div>
+    <div class="gallery-item"><span class="image-indicator">6 / 15</span><img src="image/6.png" alt="Katalog 6" data-index="6"></div>
+    <div class="gallery-item"><span class="image-indicator">7 / 15</span><img src="image/7.png" alt="Katalog 7" data-index="7"></div>
+    <div class="gallery-item"><span class="image-indicator">8 / 15</span><img src="image/8.png" alt="Katalog 8" data-index="8"></div>
+    <div class="gallery-item"><span class="image-indicator">9 / 15</span><img src="image/9.png" alt="Katalog 9" data-index="9"></div>
+    <div class="gallery-item"><span class="image-indicator">10 / 15</span><img src="image/10.png" alt="Katalog 10" data-index="10"></div>
+    <div class="gallery-item"><span class="image-indicator">11 / 15</span><img src="image/11.png" alt="Katalog 11" data-index="11"></div>
+    <div class="gallery-item"><span class="image-indicator">12 / 15</span><img src="image/12.png" alt="Katalog 12" data-index="12"></div>
+    <div class="gallery-item"><span class="image-indicator">13 / 15</span><img src="image/13.png" alt="Katalog 13" data-index="13"></div>
+    <div class="gallery-item"><span class="image-indicator">14 / 15</span><img src="image/14.png" alt="Katalog 14" data-index="14"></div>
+    <div class="gallery-item"><span class="image-indicator">15 / 15</span><img src="image/15.png" alt="Katalog 15" data-index="15"></div>
   </main>
 
   <footer>
     <a href="https://gungsatya.github.io" target="_blank" rel="noopener">Vibe code by Gung Satya</a>
   </footer>
 
-  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});">
-    Back to Top
-  </button>
+  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});">Back to Top</button>
 
   <div class="modal" id="imageModal">
     <div class="modal-backdrop" id="modalBackdrop"></div>
@@ -200,10 +208,8 @@
   <script>
   (function(){
     const imgs = document.querySelectorAll('.gallery-item img');
-    const items = document.querySelectorAll('.gallery-item');
+    const firstItem = document.querySelector('.gallery-item');
     const backToTopBtn = document.querySelector('.back-to-top');
-    const firstItem = items[0];
-
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const modalIndicator = document.getElementById('modalIndicator');
@@ -211,84 +217,73 @@
     const modalClose = document.getElementById('modalClose');
 
     let curScale=1, curX=0, curY=0, startX=0, startY=0, initScale=1, initDist=0, isPan=false;
+    const apply = ()=> modalImg.style.transform=`translate(${curX}px,${curY}px) scale(${curScale})`;
+    const reset = ()=>{curScale=1;curX=curY=0;apply();};
+    const dist=(t1,t2)=>Math.hypot(t2.clientX-t1.clientX,t2.clientY-t1.clientY);
 
-    const apply = () => modalImg.style.transform = `translate(${curX}px,${curY}px) scale(${curScale})`;
-    const reset = () => { curScale=1; curX=curY=0; apply(); };
-    const dist = (t1,t2) => Math.hypot(t2.clientX-t1.clientX, t2.clientY-t1.clientY);
-
-    function openModal(src, index){
-      modalImg.src = src;
-      modalIndicator.textContent = `${index} / 15`;
+    function openModal(src,index){
+      modalImg.src=src;
+      modalIndicator.textContent=`${index} / 15`;
       reset();
       modal.classList.add('show');
     }
-    function closeModal(){ modal.classList.remove('show'); }
+    const closeModal=()=>modal.classList.remove('show');
 
-    modalBackdrop.addEventListener('click', closeModal);
-    modalClose.addEventListener('click', closeModal);
-    document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+    modalBackdrop.onclick=closeModal;
+    modalClose.onclick=closeModal;
+    document.onkeydown=e=>{if(e.key==='Escape')closeModal();};
 
-    modalImg.addEventListener('touchstart', e => {
-      if (e.touches.length === 2) {
+    // Pinch zoom + pan
+    modalImg.addEventListener('touchstart',e=>{
+      if(e.touches.length===2){
         e.preventDefault();
-        initDist = dist(e.touches[0], e.touches[1]);
-        initScale = curScale;
-      } else if (e.touches.length === 1 && curScale > 1) {
-        isPan = true;
-        startX = e.touches[0].clientX - curX;
-        startY = e.touches[0].clientY - curY;
+        initDist=dist(e.touches[0],e.touches[1]);
+        initScale=curScale;
+      } else if(e.touches.length===1&&curScale>1){
+        isPan=true;
+        startX=e.touches[0].clientX-curX;
+        startY=e.touches[0].clientY-curY;
       }
-    }, {passive:false});
-    modalImg.addEventListener('touchmove', e => {
-      if (e.touches.length === 2) {
+    },{passive:false});
+    modalImg.addEventListener('touchmove',e=>{
+      if(e.touches.length===2){
         e.preventDefault();
-        const newDist = dist(e.touches[0], e.touches[1]);
-        let s = initScale * (newDist / initDist);
-        curScale = Math.min(4, Math.max(1, s));
+        const newDist=dist(e.touches[0],e.touches[1]);
+        curScale=Math.min(4,Math.max(1,initScale*(newDist/initDist)));
         apply();
-      } else if (e.touches.length === 1 && isPan) {
-        curX = e.touches[0].clientX - startX;
-        curY = e.touches[0].clientY - startY;
+      } else if(e.touches.length===1&&isPan){
+        curX=e.touches[0].clientX-startX;
+        curY=e.touches[0].clientY-startY;
         apply();
       }
-    }, {passive:false});
-    modalImg.addEventListener('touchend', () => { isPan = false; });
+    },{passive:false});
+    modalImg.addEventListener('touchend',()=>isPan=false);
 
-    imgs.forEach(img => {
-      const indicator = img.previousElementSibling;
-      let timer, lastTap = 0;
-
-      img.addEventListener('touchstart', () => {
-        timer = setTimeout(() => indicator.classList.add('visible'), 500);
-      }, {passive:true});
-      const clearIndicator = () => {
-        clearTimeout(timer);
-        indicator.classList.remove('visible');
-      };
-      img.addEventListener('touchend', e => {
-        clearIndicator();
-        const now = Date.now();
-        if (now - lastTap < 300) openModal(img.src, img.dataset.index);
-        lastTap = now;
+    imgs.forEach(img=>{
+      const indicator=img.previousElementSibling;
+      let timer,lastTap=0;
+      img.addEventListener('touchstart',()=>timer=setTimeout(()=>indicator.classList.add('visible'),500),{passive:true});
+      const clear=()=>{clearTimeout(timer);indicator.classList.remove('visible');};
+      img.addEventListener('touchend',e=>{
+        clear();
+        const now=Date.now();
+        if(now-lastTap<300)openModal(img.src,img.dataset.index);
+        lastTap=now;
       });
-      img.addEventListener('touchcancel', clearIndicator);
-      img.addEventListener('dblclick', e => {
-        e.preventDefault();
-        openModal(img.src, img.dataset.index);
-      });
+      img.addEventListener('touchcancel',clear);
+      img.addEventListener('dblclick',e=>{e.preventDefault();openModal(img.src,img.dataset.index);});
     });
 
-    if ('IntersectionObserver' in window && firstItem && backToTopBtn) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          backToTopBtn.classList.toggle('visible', !entry.isIntersecting);
+    // Back-to-top visible jika gambar pertama tidak kelihatan
+    if('IntersectionObserver'in window&&firstItem){
+      const observer=new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          backToTopBtn.classList.toggle('visible',!entry.isIntersecting);
         });
-      }, { threshold: 0.6 });
+      },{threshold:0.6});
       observer.observe(firstItem);
     } else {
-      window.addEventListener('scroll', () => {
-        backToTopBtn.classList.toggle('visible', window.scrollY > 200);
-      });
+      window.onscroll=()=>backToTopBtn.classList.toggle('visible',window.scrollY>200);
     }
   })();
   </script>
