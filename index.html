@@ -47,6 +47,9 @@
     .gallery-item {
       position: relative;
       padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* gambar & tombol di tengah */
     }
 
     .gallery-item img {
@@ -56,8 +59,6 @@
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.15);
       display: block;
-      margin: 0 auto;
-      touch-action: manipulation;
     }
 
     .image-indicator {
@@ -77,16 +78,14 @@
     .image-indicator.visible { opacity: 1; }
 
     .zoom-btn {
-      position: absolute;
-      right: 24px;
-      bottom: 24px;
-      width: 32px;
-      height: 32px;
+      margin-top: 8px;
+      width: 40px;
+      height: 40px;
       border-radius: 999px;
       border: none;
       background: rgba(17,24,39,0.85);
       color: #fff;
-      display: flex;
+      display: flex;               /* icon tepat di tengah */
       align-items: center;
       justify-content: center;
       font-size: 1rem;
@@ -274,7 +273,6 @@
     Back to Top
   </button>
 
-  <!-- Modal -->
   <div class="modal" id="imageModal">
     <div class="modal-backdrop" id="modalBackdrop"></div>
     <div class="modal-content">
@@ -302,13 +300,8 @@
     const apply = () => {
       modalImg.style.transform = `translate(${curX}px,${curY}px) scale(${curScale})`;
     };
-    const reset = () => {
-      curScale = 1;
-      curX = 0;
-      curY = 0;
-      apply();
-    };
-    const dist = (t1,t2) => Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
+    const reset = () => { curScale=1; curX=0; curY=0; apply(); };
+    const dist = (t1,t2) => Math.hypot(t2.clientX-t1.clientX, t2.clientY-t1.clientY);
 
     function openModal(src, index){
       modalImg.src = src;
@@ -322,7 +315,7 @@
     modalClose.addEventListener('click', closeModal);
     document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
 
-    // Pinch & pan di modal
+    // Pinch & pan modal
     modalImg.addEventListener('touchstart', e => {
       if (e.touches.length === 2) {
         e.preventDefault();
@@ -334,7 +327,6 @@
         startY = e.touches[0].clientY - curY;
       }
     }, {passive:false});
-
     modalImg.addEventListener('touchmove', e => {
       if (e.touches.length === 2) {
         e.preventDefault();
@@ -348,10 +340,9 @@
         apply();
       }
     }, {passive:false});
-
     modalImg.addEventListener('touchend', () => { isPan = false; });
 
-    // Long press indicator + double tap, plus zoom button
+    // Long press indicator + double tap + zoom button
     imgs.forEach(img => {
       const item = img.closest('.gallery-item');
       const indicator = item.querySelector('.image-indicator');
@@ -392,7 +383,7 @@
       }
     });
 
-    // Back to Top hanya muncul jika gambar pertama tidak terlihat
+    // Back to Top hanya muncul kalau gambar pertama tidak kelihatan
     if ('IntersectionObserver' in window && firstItem && backToTopBtn) {
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -405,7 +396,6 @@
       }, { threshold: 0.6 });
       observer.observe(firstItem);
     } else {
-      // fallback: pakai scrollY
       window.addEventListener('scroll', () => {
         if (window.scrollY > 200) backToTopBtn.classList.add('visible');
         else backToTopBtn.classList.remove('visible');
