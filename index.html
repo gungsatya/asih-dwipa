@@ -173,24 +173,21 @@
 
   <main class="gallery">
     <!-- Gambar 1–15 -->
-    <div class="gallery-item"><span class="image-indicator">1 / 18</span><img src="image/1.png" alt="Katalog 1" data-index="1"></div>
-    <div class="gallery-item"><span class="image-indicator">2 / 18</span><img src="image/2.png" alt="Katalog 2" data-index="2"></div>
-    <div class="gallery-item"><span class="image-indicator">3 / 18</span><img src="image/3.png" alt="Katalog 3" data-index="3"></div>
-    <div class="gallery-item"><span class="image-indicator">4 / 18</span><img src="image/4.png" alt="Katalog 4" data-index="4"></div>
-    <div class="gallery-item"><span class="image-indicator">5 / 18</span><img src="image/5.png" alt="Katalog 5" data-index="5"></div>
-    <div class="gallery-item"><span class="image-indicator">6 / 18</span><img src="image/6.png" alt="Katalog 6" data-index="6"></div>
-    <div class="gallery-item"><span class="image-indicator">7 / 18</span><img src="image/7.png" alt="Katalog 7" data-index="7"></div>
-    <div class="gallery-item"><span class="image-indicator">8 / 18</span><img src="image/8.png" alt="Katalog 8" data-index="8"></div>
-    <div class="gallery-item"><span class="image-indicator">9 / 18</span><img src="image/9.png" alt="Katalog 9" data-index="9"></div>
-    <div class="gallery-item"><span class="image-indicator">10 / 18</span><img src="image/10.png" alt="Katalog 10" data-index="10"></div>
-    <div class="gallery-item"><span class="image-indicator">11 / 18</span><img src="image/11.png" alt="Katalog 11" data-index="11"></div>
-    <div class="gallery-item"><span class="image-indicator">12 / 18</span><img src="image/12.png" alt="Katalog 12" data-index="12"></div>
-    <div class="gallery-item"><span class="image-indicator">13 / 18</span><img src="image/13.png" alt="Katalog 13" data-index="13"></div>
-    <div class="gallery-item"><span class="image-indicator">14 / 18</span><img src="image/14.png" alt="Katalog 14" data-index="14"></div>
-    <div class="gallery-item"><span class="image-indicator">15 / 18</span><img src="image/15.png" alt="Katalog 15" data-index="15"></div>
-	<div class="gallery-item"><span class="image-indicator">16 / 18</span><img src="image/16.png" alt="Katalog 16" data-index="16"></div>
-    <div class="gallery-item"><span class="image-indicator">17 / 18</span><img src="image/17.png" alt="Katalog 17" data-index="17"></div>
-	<div class="gallery-item"><span class="image-indicator">18 / 18</span><img src="image/18.png" alt="Katalog 18" data-index="18"></div>
+    <div class="gallery-item"><span class="image-indicator">1 / 15</span><img src="image/1.png" alt="Katalog 1" data-index="1"></div>
+    <div class="gallery-item"><span class="image-indicator">2 / 15</span><img src="image/2.png" alt="Katalog 2" data-index="2"></div>
+    <div class="gallery-item"><span class="image-indicator">3 / 15</span><img src="image/3.png" alt="Katalog 3" data-index="3"></div>
+    <div class="gallery-item"><span class="image-indicator">4 / 15</span><img src="image/4.png" alt="Katalog 4" data-index="4"></div>
+    <div class="gallery-item"><span class="image-indicator">5 / 15</span><img src="image/5.png" alt="Katalog 5" data-index="5"></div>
+    <div class="gallery-item"><span class="image-indicator">6 / 15</span><img src="image/6.png" alt="Katalog 6" data-index="6"></div>
+    <div class="gallery-item"><span class="image-indicator">7 / 15</span><img src="image/7.png" alt="Katalog 7" data-index="7"></div>
+    <div class="gallery-item"><span class="image-indicator">8 / 15</span><img src="image/8.png" alt="Katalog 8" data-index="8"></div>
+    <div class="gallery-item"><span class="image-indicator">9 / 15</span><img src="image/9.png" alt="Katalog 9" data-index="9"></div>
+    <div class="gallery-item"><span class="image-indicator">10 / 15</span><img src="image/10.png" alt="Katalog 10" data-index="10"></div>
+    <div class="gallery-item"><span class="image-indicator">11 / 15</span><img src="image/11.png" alt="Katalog 11" data-index="11"></div>
+    <div class="gallery-item"><span class="image-indicator">12 / 15</span><img src="image/12.png" alt="Katalog 12" data-index="12"></div>
+    <div class="gallery-item"><span class="image-indicator">13 / 15</span><img src="image/13.png" alt="Katalog 13" data-index="13"></div>
+    <div class="gallery-item"><span class="image-indicator">14 / 15</span><img src="image/14.png" alt="Katalog 14" data-index="14"></div>
+    <div class="gallery-item"><span class="image-indicator">15 / 15</span><img src="image/15.png" alt="Katalog 15" data-index="15"></div>
   </main>
 
   <footer>
@@ -202,7 +199,7 @@
   <div class="modal" id="imageModal">
     <div class="modal-backdrop" id="modalBackdrop"></div>
     <div class="modal-content">
-      <span class="modal-indicator" id="modalIndicator">1 / 18</span>
+      <span class="modal-indicator" id="modalIndicator">1 / 15</span>
       <img id="modalImage" src="" alt="Preview katalog" />
       <button class="modal-close" id="modalClose">&times;</button>
     </div>
@@ -226,7 +223,7 @@
 
     function openModal(src,index){
       modalImg.src=src;
-      modalIndicator.textContent=`${index} / 18`;
+      modalIndicator.textContent=`${index} / 15`;
       reset();
       modal.classList.add('show');
     }
