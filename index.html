@@ -35,8 +35,18 @@
       border-bottom: 1px solid #e5e7eb;
       z-index: 10;
     }
-    header h1 { margin: 0; font-size: 1.2rem; font-weight: 600; }
-    header p { margin: 4px 0 0; color: #6b7280; font-size: 0.9rem; }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    header p {
+      margin: 4px 0 0;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
 
     .gallery {
       padding: 12px 0 72px;
@@ -59,6 +69,9 @@
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.15);
       display: block;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
     }
 
     .image-indicator {
@@ -75,7 +88,10 @@
       pointer-events: none;
       transition: opacity .15s;
     }
-    .image-indicator.visible { opacity: 1; }
+
+    .image-indicator.visible {
+      opacity: 1;
+    }
 
     .back-to-top {
       position: fixed;
@@ -94,6 +110,7 @@
       transform: translateY(8px);
       transition: opacity .2s, transform .2s;
     }
+
     .back-to-top.visible {
       opacity: 1;
       pointer-events: auto;
@@ -108,12 +125,17 @@
       justify-content: center;
       z-index: 50;
     }
-    .modal.show { display: flex; }
+
+    .modal.show {
+      display: flex;
+    }
+
     .modal-backdrop {
       position: absolute;
       inset: 0;
       background: rgba(0,0,0,.7);
     }
+
     .modal-content {
       position: relative;
       width: 100%;
@@ -123,12 +145,17 @@
       justify-content: center;
       overflow: hidden;
     }
+
     #modalImage {
       max-width: 100%;
       max-height: 100%;
       touch-action: none;
       transform-origin: center center;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
     }
+
     .modal-close {
       position: absolute;
       top: 16px;
@@ -142,6 +169,7 @@
       font-size: 1.4rem;
       cursor: pointer;
     }
+
     .modal-indicator {
       position: absolute;
       left: 16px;
@@ -161,10 +189,18 @@
       font-size: 0.85rem;
       color: #6b7280;
     }
-    footer a { color: #6b7280; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+
+    footer a {
+      color: #6b7280;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
+
 <body>
   <header>
     <h1>Asih Dwipa Incense - Price Katalog</h1>
@@ -172,21 +208,19 @@
   </header>
 
   <main class="gallery">
-    <!-- Gambar 1–15 -->
-    <div class="gallery-item"><span class="image-indicator">1 / 14</span><img src="image/1.png" alt="Katalog 1" data-index="1"></div>
-    <div class="gallery-item"><span class="image-indicator">2 / 14</span><img src="image/2.png" alt="Katalog 2" data-index="2"></div>
-    <div class="gallery-item"><span class="image-indicator">3 / 14</span><img src="image/3.png" alt="Katalog 3" data-index="3"></div>
-    <div class="gallery-item"><span class="image-indicator">4 / 14</span><img src="image/4.png" alt="Katalog 4" data-index="4"></div>
-    <div class="gallery-item"><span class="image-indicator">5 / 14</span><img src="image/5.png" alt="Katalog 5" data-index="5"></div>
-    <div class="gallery-item"><span class="image-indicator">6 / 14</span><img src="image/6.png" alt="Katalog 6" data-index="6"></div>
-    <div class="gallery-item"><span class="image-indicator">7 / 14</span><img src="image/7.png" alt="Katalog 7" data-index="7"></div>
-    <div class="gallery-item"><span class="image-indicator">8 / 14</span><img src="image/8.png" alt="Katalog 8" data-index="8"></div>
-    <div class="gallery-item"><span class="image-indicator">9 / 14</span><img src="image/9.png" alt="Katalog 9" data-index="9"></div>
-    <div class="gallery-item"><span class="image-indicator">10 / 14</span><img src="image/10.png" alt="Katalog 10" data-index="10"></div>
-    <div class="gallery-item"><span class="image-indicator">11 / 14</span><img src="image/11.png" alt="Katalog 11" data-index="11"></div>
-    <div class="gallery-item"><span class="image-indicator">12 / 14</span><img src="image/12.png" alt="Katalog 12" data-index="12"></div>
-    <div class="gallery-item"><span class="image-indicator">13 / 14</span><img src="image/13.png" alt="Katalog 13" data-index="13"></div>
-    <div class="gallery-item"><span class="image-indicator">14 / 14</span><img src="image/14.png" alt="Katalog 14" data-index="14"></div>
+    <div class="gallery-item"><span class="image-indicator">1 / 13</span><img src="image/1.png" alt="Katalog 1" data-index="1"></div>
+    <div class="gallery-item"><span class="image-indicator">2 / 13</span><img src="image/2.png" alt="Katalog 2" data-index="2"></div>
+    <div class="gallery-item"><span class="image-indicator">3 / 13</span><img src="image/3.png" alt="Katalog 3" data-index="3"></div>
+    <div class="gallery-item"><span class="image-indicator">4 / 13</span><img src="image/4.png" alt="Katalog 4" data-index="4"></div>
+    <div class="gallery-item"><span class="image-indicator">5 / 13</span><img src="image/5.png" alt="Katalog 5" data-index="5"></div>
+    <div class="gallery-item"><span class="image-indicator">6 / 13</span><img src="image/6.png" alt="Katalog 6" data-index="6"></div>
+    <div class="gallery-item"><span class="image-indicator">7 / 13</span><img src="image/7.png" alt="Katalog 7" data-index="7"></div>
+    <div class="gallery-item"><span class="image-indicator">8 / 13</span><img src="image/8.png" alt="Katalog 8" data-index="8"></div>
+    <div class="gallery-item"><span class="image-indicator">9 / 13</span><img src="image/9.png" alt="Katalog 9" data-index="9"></div>
+    <div class="gallery-item"><span class="image-indicator">10 / 13</span><img src="image/10.png" alt="Katalog 10" data-index="10"></div>
+    <div class="gallery-item"><span class="image-indicator">11 / 13</span><img src="image/11.png" alt="Katalog 11" data-index="11"></div>
+    <div class="gallery-item"><span class="image-indicator">12 / 13</span><img src="image/12.png" alt="Katalog 12" data-index="12"></div>
+    <div class="gallery-item"><span class="image-indicator">13 / 13</span><img src="image/13.png" alt="Katalog 13" data-index="13"></div>
   </main>
 
   <footer>
@@ -198,7 +232,7 @@
   <div class="modal" id="imageModal">
     <div class="modal-backdrop" id="modalBackdrop"></div>
     <div class="modal-content">
-      <span class="modal-indicator" id="modalIndicator">1 / 14</span>
+      <span class="modal-indicator" id="modalIndicator">1 / 13</span>
       <img id="modalImage" src="" alt="Preview katalog" />
       <button class="modal-close" id="modalClose">&times;</button>
     </div>
@@ -209,80 +243,192 @@
     const imgs = document.querySelectorAll('.gallery-item img');
     const firstItem = document.querySelector('.gallery-item');
     const backToTopBtn = document.querySelector('.back-to-top');
+
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const modalIndicator = document.getElementById('modalIndicator');
     const modalBackdrop = document.getElementById('modalBackdrop');
     const modalClose = document.getElementById('modalClose');
 
-    let curScale=1, curX=0, curY=0, startX=0, startY=0, initScale=1, initDist=0, isPan=false;
-    const apply = ()=> modalImg.style.transform=`translate(${curX}px,${curY}px) scale(${curScale})`;
-    const reset = ()=>{curScale=1;curX=curY=0;apply();};
-    const dist=(t1,t2)=>Math.hypot(t2.clientX-t1.clientX,t2.clientY-t1.clientY);
+    let curScale = 1;
+    let curX = 0;
+    let curY = 0;
+    let startX = 0;
+    let startY = 0;
+    let initScale = 1;
+    let initDist = 0;
+    let isPan = false;
 
-    function openModal(src,index){
-      modalImg.src=src;
-      modalIndicator.textContent=`${index} / 14`;
+    const apply = () => {
+      modalImg.style.transform = `translate(${curX}px, ${curY}px) scale(${curScale})`;
+    };
+
+    const reset = () => {
+      curScale = 1;
+      curX = 0;
+      curY = 0;
+      apply();
+    };
+
+    const dist = (t1, t2) => {
+      return Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
+    };
+
+    function openModal(src, index) {
+      modalImg.src = src;
+      modalIndicator.textContent = `${index} / 13`;
       reset();
       modal.classList.add('show');
+      document.body.style.overflow = 'hidden';
     }
-    const closeModal=()=>modal.classList.remove('show');
 
-    modalBackdrop.onclick=closeModal;
-    modalClose.onclick=closeModal;
-    document.onkeydown=e=>{if(e.key==='Escape')closeModal();};
+    function closeModal() {
+      modal.classList.remove('show');
+      modalImg.src = '';
+      document.body.style.overflow = '';
+    }
 
-    // Pinch zoom + pan
-    modalImg.addEventListener('touchstart',e=>{
-      if(e.touches.length===2){
+    modalBackdrop.onclick = closeModal;
+    modalClose.onclick = closeModal;
+
+    document.onkeydown = e => {
+      if (e.key === 'Escape') closeModal();
+    };
+
+    // Pinch zoom + pan di dalam modal
+    modalImg.addEventListener('touchstart', e => {
+      if (e.touches.length === 2) {
         e.preventDefault();
-        initDist=dist(e.touches[0],e.touches[1]);
-        initScale=curScale;
-      } else if(e.touches.length===1&&curScale>1){
-        isPan=true;
-        startX=e.touches[0].clientX-curX;
-        startY=e.touches[0].clientY-curY;
+        initDist = dist(e.touches[0], e.touches[1]);
+        initScale = curScale;
+        isPan = false;
+      } else if (e.touches.length === 1 && curScale > 1) {
+        isPan = true;
+        startX = e.touches[0].clientX - curX;
+        startY = e.touches[0].clientY - curY;
       }
-    },{passive:false});
-    modalImg.addEventListener('touchmove',e=>{
-      if(e.touches.length===2){
-        e.preventDefault();
-        const newDist=dist(e.touches[0],e.touches[1]);
-        curScale=Math.min(4,Math.max(1,initScale*(newDist/initDist)));
-        apply();
-      } else if(e.touches.length===1&&isPan){
-        curX=e.touches[0].clientX-startX;
-        curY=e.touches[0].clientY-startY;
-        apply();
-      }
-    },{passive:false});
-    modalImg.addEventListener('touchend',()=>isPan=false);
+    }, { passive: false });
 
-    imgs.forEach(img=>{
-      const indicator=img.previousElementSibling;
-      let timer,lastTap=0;
-      img.addEventListener('touchstart',()=>timer=setTimeout(()=>indicator.classList.add('visible'),500),{passive:true});
-      const clear=()=>{clearTimeout(timer);indicator.classList.remove('visible');};
-      img.addEventListener('touchend',e=>{
-        clear();
-        const now=Date.now();
-        if(now-lastTap<300)openModal(img.src,img.dataset.index);
-        lastTap=now;
+    modalImg.addEventListener('touchmove', e => {
+      if (e.touches.length === 2) {
+        e.preventDefault();
+
+        const newDist = dist(e.touches[0], e.touches[1]);
+        curScale = Math.min(4, Math.max(1, initScale * (newDist / initDist)));
+
+        if (curScale === 1) {
+          curX = 0;
+          curY = 0;
+        }
+
+        apply();
+      } else if (e.touches.length === 1 && isPan && curScale > 1) {
+        e.preventDefault();
+
+        curX = e.touches[0].clientX - startX;
+        curY = e.touches[0].clientY - startY;
+
+        apply();
+      }
+    }, { passive: false });
+
+    modalImg.addEventListener('touchend', () => {
+      isPan = false;
+
+      if (curScale <= 1.02) {
+        curScale = 1;
+        curX = 0;
+        curY = 0;
+        apply();
+      }
+    });
+
+    // Gallery image interaction
+    // Zoom modal hanya terbuka saat double tap yang benar-benar jelas.
+    // Scroll kecil / geser jari tidak akan membuka modal.
+    imgs.forEach(img => {
+      const indicator = img.previousElementSibling;
+
+      let timer;
+      let lastTap = 0;
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let moved = false;
+
+      const DOUBLE_TAP_DELAY = 450;
+      const MOVE_TOLERANCE = 18;
+      const LONG_PRESS_DELAY = 500;
+
+      img.addEventListener('touchstart', e => {
+        if (!e.touches || e.touches.length !== 1) return;
+
+        moved = false;
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+
+        timer = setTimeout(() => {
+          indicator.classList.add('visible');
+        }, LONG_PRESS_DELAY);
+      }, { passive: true });
+
+      img.addEventListener('touchmove', e => {
+        if (!e.touches || e.touches.length !== 1) return;
+
+        const dx = Math.abs(e.touches[0].clientX - touchStartX);
+        const dy = Math.abs(e.touches[0].clientY - touchStartY);
+
+        if (dx > MOVE_TOLERANCE || dy > MOVE_TOLERANCE) {
+          moved = true;
+          clearTimeout(timer);
+          indicator.classList.remove('visible');
+        }
+      }, { passive: true });
+
+      img.addEventListener('touchend', e => {
+        clearTimeout(timer);
+        indicator.classList.remove('visible');
+
+        if (moved) {
+          lastTap = 0;
+          return;
+        }
+
+        const now = Date.now();
+
+        if (lastTap && now - lastTap < DOUBLE_TAP_DELAY) {
+          e.preventDefault();
+          openModal(img.src, img.dataset.index);
+          lastTap = 0;
+        } else {
+          lastTap = now;
+        }
+      }, { passive: false });
+
+      img.addEventListener('touchcancel', () => {
+        clearTimeout(timer);
+        indicator.classList.remove('visible');
+        moved = false;
       });
-      img.addEventListener('touchcancel',clear);
-      img.addEventListener('dblclick',e=>{e.preventDefault();openModal(img.src,img.dataset.index);});
+
+      img.addEventListener('dblclick', e => {
+        e.preventDefault();
+        openModal(img.src, img.dataset.index);
+      });
     });
 
     // Back-to-top visible jika gambar pertama tidak kelihatan
-    if('IntersectionObserver'in window&&firstItem){
-      const observer=new IntersectionObserver(entries=>{
-        entries.forEach(entry=>{
-          backToTopBtn.classList.toggle('visible',!entry.isIntersecting);
+    if ('IntersectionObserver' in window && firstItem) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          backToTopBtn.classList.toggle('visible', !entry.isIntersecting);
         });
-      },{threshold:0.6});
+      }, { threshold: 0.6 });
+
       observer.observe(firstItem);
     } else {
-      window.onscroll=()=>backToTopBtn.classList.toggle('visible',window.scrollY>200);
+      window.onscroll = () => {
+        backToTopBtn.classList.toggle('visible', window.scrollY > 200);
+      };
     }
   })();
   </script>
