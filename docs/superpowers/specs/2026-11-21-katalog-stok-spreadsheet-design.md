@@ -67,7 +67,21 @@ tetap berupa gambar.
 - Semua 16 produk + Ketentuan Pemesanan dimasukkan.
 - Produk bisa disembunyikan lewat spreadsheet.
 - Foto diambil dari desain Canva `DAGQEYPyiIM`.
-- Tampilan kartu produk meniru gaya Canva (sketsa disetujui).
+- Tampilan kartu produk meniru gaya Canva (sketsa disetujui, lihat bagian
+  Halaman).
+- Enam produk yang dulu diturunkan dari situs (Tualen, Agni 0.5 kg,
+  Agni 0.25 kg, Siddhi, Harum 2 Jam, Harum 5 Jam) **disembunyikan dulu**;
+  pemilik memunculkannya sendiri dari spreadsheet.
+- **Varian bisa ditambah dari spreadsheet**: daftar varian di situs mengikuti
+  tab `Varian` (termasuk urutannya).
+
+## Akun
+
+- Spreadsheet dibuat di akun Google yang tersambung ke sesi ini (akun
+  pemilik). Pemilik bisa menambah editor lain (mis. keluarga) lewat tombol
+  Bagikan; link umum hanya "Pelihat".
+- Salinan Canva dibuat di akun Canva yang tersambung (sudah terbukti bisa
+  membaca desain `DAGQEYPyiIM`).
 
 ## Spreadsheet
 
@@ -84,8 +98,9 @@ Tab **`Varian`** — satu baris per varian:
 | A: Produk | B: Varian | C: Ada stok (checkbox) |
 |---|---|---|
 
-Baris 1 = judul kolom (dibekukan). Nilai awal = kondisi di gambar sekarang
-(lihat tabel produk). Semua produk awalnya Tampilkan = ✓.
+Baris 1 = judul kolom (dibekukan). Nilai awal Ada stok = kondisi di gambar
+Canva sekarang (lihat tabel produk). Tampilkan awal = ✓ untuk produk 1–10,
+✗ untuk produk 11–16.
 
 Dibaca situs lewat endpoint CSV:
 `https://docs.google.com/spreadsheets/d/<ID>/gviz/tq?tqx=out:csv&sheet=Produk`
@@ -100,17 +115,32 @@ disimpan di satu konstanta di kode.
 - Produk **habis** jika Ada stok (tab Produk) = FALSE, **atau** produk punya
   varian dan semua variannya FALSE.
 - Varian **habis** jika Ada stok (tab Varian) = FALSE → dicoret + label "Habis".
-- Produk/varian di repo yang tidak ada di spreadsheet → dianggap tampil & ada.
-- Baris spreadsheet yang tidak cocok dengan apa pun di repo → diabaikan
-  (dicatat di console).
+- **Daftar varian berasal dari tab `Varian`**: semua baris milik produk itu,
+  sesuai urutan di spreadsheet. Varian baru cukup ditambah satu baris (nama
+  produk harus persis sama). Produk tanpa baris di tab Varian → tanpa daftar
+  varian. Judul daftar memakai judul produk di repo; jika produk tidak punya
+  judul (mis. Homa diberi varian baru) → "Koleksi aromatik:".
+- Produk di repo yang tidak ada di tab Produk → pakai nilai bawaan repo
+  (tampil sesuai bawaan, dianggap ada stok).
+- Baris yang nama produknya tidak cocok dengan produk di repo → diabaikan
+  (dicatat di console). Menambah **produk** baru tetap lewat repo (perlu foto,
+  harga, deskripsi).
+- Baris kosong (nama kosong) diabaikan.
 - Saat memuat: tampilkan "Memuat katalog…" sampai spreadsheet terbaca, supaya
   produk tersembunyi tidak berkedip. Batas waktu ±8 detik.
-- Jika gagal/timeout: tampilkan **semua** produk tanpa label stok + catatan
-  kecil "Status stok sedang tidak bisa dimuat — silakan tanyakan via WhatsApp."
+- Jika salah satu tab gagal/timeout: pakai **data bawaan repo** — produk
+  dengan `tampil` bawaan ✓ (produk 1–10; 11–16 tetap tersembunyi), daftar
+  varian bawaan repo, **tanpa** label stok, + catatan kecil "Status stok
+  sedang tidak bisa dimuat — silakan tanyakan via WhatsApp."
 - Fetch tanpa cache browser (mis. parameter penanda waktu), supaya perubahan
   cepat terlihat.
 
 ## Data produk (di repo)
+
+Per produk di repo: nama, harga, deskripsi, judul daftar, foto, `tampil`
+bawaan, dan daftar varian bawaan (dipakai hanya saat spreadsheet gagal).
+Kolom "Produk" = Ada stok awal di tab Produk. Tampil bawaan: ✓ untuk 1–10,
+✗ untuk 11–16.
 
 | # | Produk (nama di spreadsheet) | Harga | Judul daftar | Varian (awal: ✓ ada / ✗ habis) | Produk |
 |---|---|---|---|---|---|
@@ -157,7 +187,24 @@ pertama oranye (#ff914d), sisanya hitam (mis. "**Nirvana** Incense",
 Urutan: header (sticky, seperti sekarang) → sampul → 16 kartu produk (urutan
 Canva) → Ketentuan Pemesanan → footer ("Vibe code by Gung Satya").
 
-Kartu produk (1 kolom, lebar maks ±600 px seperti sekarang):
+Kartu produk (1 kolom, lebar maks ±600 px seperti sekarang; isi kartu
+bertumpuk vertikal, bukan berdampingan seperti di Canva):
+
+```
+┌────────────────────────────┐
+│   [foto produk]            │
+│   (abu-abu + label "HABIS" │
+│    jika produk habis)      │
+├────────────────────────────┤
+│ Buddhi Incense             │
+│ IDR 37.000 / bks           │
+│ Nyala dupa selama 2 jam…   │
+│ Koleksi aromatik:          │
+│  • Cendana                 │
+│  • ~~Kemenyan Madu~~ HABIS │
+└────────────────────────────┘
+```
+
 - Foto; jika produk habis: foto abu-abu + label besar "HABIS".
 - Nama (dua warna, font serif/slab mirip Canva), harga tebal; harga paket
   berwarna oranye dengan label kecil "Hot Price".
@@ -188,16 +235,19 @@ description & Open Graph. Dibuang: indikator "n / 11" (tidak relevan lagi).
 ## Pengujian
 
 - Data spreadsheet tiruan (CSV lokal) untuk kasus: produk disembunyikan,
-  produk habis, varian habis, semua varian habis, nama beda huruf besar/kecil,
-  baris tak dikenal, spreadsheet gagal dimuat/timeout.
+  produk habis, varian habis, semua varian habis, varian baru ditambah,
+  urutan varian diubah, nama beda huruf besar/kecil, baris tak dikenal,
+  baris kosong, spreadsheet gagal dimuat/timeout (produk 11–16 tetap
+  tersembunyi).
 - Cek tampilan di viewport HP (Playwright) + screenshot untuk pemilik.
 - Setelah spreadsheet asli dibuat: cek situs membaca data asli.
 
 ## Panduan untuk pemilik
 
 File singkat `CARA-UBAH-STOK.md` (bahasa Indonesia): cara mencentang stok,
-menyembunyikan produk, menambah varian, dan bahwa nama di kolom Produk/Varian
-tidak boleh diubah tanpa mengubah situs.
+menyembunyikan/memunculkan produk, menambah/menghapus/mengurutkan varian
+(baris di tab Varian, nama produk harus persis sama), dan bahwa nama di kolom
+Produk tab `Produk` tidak boleh diubah tanpa mengubah situs.
 
 ## Diserahkan ke pembangun
 
