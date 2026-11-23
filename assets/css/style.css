@@ -1,0 +1,256 @@
+:root {
+  --teks: #111827;
+  --teks-lembut: #6b7280;
+  --garis: #e5e7eb;
+  --oranye: #ff914d;
+  --oranye-hot: #ff5c12;
+  --merah: #d90007;
+  --latar-kartu: #fafaf8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #fff;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--teks);
+  line-height: 1.5;
+}
+
+/* Header */
+.kepala {
+  text-align: center;
+  padding: 16px 12px;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--garis);
+  z-index: 10;
+}
+.kepala h1 { margin: 0; font-size: 1.2rem; font-weight: 600; }
+.kepala p { margin: 4px 0 0; color: var(--teks-lembut); font-size: 0.9rem; }
+.kepala a { color: var(--teks-lembut); }
+
+.halaman {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 12px 12px 72px;
+}
+
+.sampul {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.memuat { text-align: center; color: var(--teks-lembut); padding: 32px 0; }
+
+.catatan-stok {
+  margin: 16px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  font-size: 0.9rem;
+}
+
+/* Kartu produk */
+.kartu {
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--latar-kartu);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.kartu__foto { position: relative; }
+.kartu__foto img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.kartu--habis .kartu__foto img { filter: grayscale(1) brightness(0.85); }
+.label-habis {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  padding: 6px 22px;
+  border: 4px solid var(--merah);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--merah);
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+}
+
+.kartu__isi { padding: 14px 16px 18px; }
+
+.kartu__nama {
+  margin: 0;
+  font-family: 'Roboto Slab', Georgia, serif;
+  font-weight: 400;
+  font-size: 1.7rem;
+  line-height: 1.25;
+}
+.kartu__nama .aksen { color: var(--oranye); }
+
+.kartu__harga { margin: 8px 0 4px; }
+.harga { margin: 0; font-weight: 700; font-size: 1.25rem; }
+.harga--hot { color: var(--oranye-hot); }
+.label-hot {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--oranye-hot);
+  color: #fff;
+  font-size: 0.7rem;
+  font-style: italic;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.kartu__deskripsi { margin: 8px 0 0; font-size: 0.95rem; }
+
+.kartu__judul-varian {
+  margin: 12px 0 4px;
+  color: var(--merah);
+  font-weight: 700;
+}
+.daftar-varian { margin: 0; padding-left: 20px; }
+.varian { color: var(--merah); }
+.varian--habis { color: var(--teks); }
+.varian--habis .varian__nama { text-decoration: line-through; }
+.label-varian-habis {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 6px;
+  border: 1.5px solid var(--merah);
+  border-radius: 4px;
+  color: var(--merah);
+  font-size: 0.75rem;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+/* Ketentuan pemesanan */
+.pemesanan {
+  margin-top: 32px;
+  padding: 18px 16px;
+  border-radius: 8px;
+  background: var(--latar-kartu);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.pemesanan h2 {
+  margin: 0 0 8px;
+  font-family: 'Roboto Slab', Georgia, serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.pemesanan h3 { margin: 18px 0 8px; font-size: 1rem; }
+.pemesanan ol { padding-left: 20px; }
+.pemesanan li { margin-bottom: 6px; }
+.format-pesan {
+  margin: 6px 0 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid var(--garis);
+  font-family: inherit;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+}
+.kontak { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.tombol-wa {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #25d366;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+.tombol-wa span { font-weight: 400; }
+
+/* Footer */
+.kaki {
+  max-width: 600px;
+  margin: 0 auto 16px;
+  padding-left: 12px;
+  font-size: 0.85rem;
+}
+.kaki a { color: var(--teks-lembut); text-decoration: none; }
+.kaki a:hover { text-decoration: underline; }
+
+/* Back to top */
+.back-to-top {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--garis);
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  font-size: 0.85rem;
+  z-index: 40;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+/* Modal zoom */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+.modal.show { display: flex; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.8); }
+.modal-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#modalImage {
+  max-width: 100%;
+  max-height: 100%;
+  touch-action: none;
+  transform-origin: center center;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(17, 24, 39, 0.75);
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}

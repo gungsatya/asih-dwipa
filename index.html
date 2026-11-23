@@ -5,430 +5,73 @@
   <title>Asih Dwipa Incense - Price Katalog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Asih Dwipa Incense - Katalog harga dupa dengan aroma wangi yang menenangkan. Lihat koleksi varian dupa dan harga dalam satu halaman yang mudah di-scroll di smartphone Anda." />
+  <meta name="description" content="Asih Dwipa Incense - Katalog harga dupa dengan aroma wangi yang menenangkan. Lihat koleksi varian dupa, harga, dan ketersediaan stok dalam satu halaman yang mudah di-scroll di smartphone Anda." />
+  <link rel="icon" href="data:," />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Asih Dwipa Incense - Price Katalog" />
-  <meta property="og:description" content="Katalog dupa wangi Asih Dwipa Incense. Lihat berbagai varian dan harga dalam satu halaman yang praktis di smartphone Anda." />
-  <meta property="og:image" content="image/1.png" />
+  <meta property="og:description" content="Katalog dupa wangi Asih Dwipa Incense. Lihat berbagai varian, harga, dan ketersediaan stok dalam satu halaman yang praktis di smartphone Anda." />
+  <meta property="og:image" content="assets/img/sampul.jpg" />
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Roboto+Slab:wght@400&display=swap" rel="stylesheet" />
 
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: #fff;
-      font-family: 'Open Sans', sans-serif;
-      color: #111827;
-    }
-
-    header {
-      text-align: center;
-      padding: 16px 12px;
-      position: sticky;
-      top: 0;
-      background: #fff;
-      border-bottom: 1px solid #e5e7eb;
-      z-index: 10;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    header p {
-      margin: 4px 0 0;
-      color: #6b7280;
-      font-size: 0.9rem;
-    }
-
-    .gallery {
-      padding: 12px 0 72px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .gallery-item {
-      position: relative;
-      padding: 8px 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .gallery-item img {
-      width: 100vh;
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      display: block;
-      user-select: none;
-      -webkit-user-select: none;
-      -webkit-touch-callout: none;
-    }
-
-    .image-indicator {
-      position: absolute;
-      left: 20px;
-      top: 20px;
-      background: rgba(17,24,39,.85);
-      color: #fff;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .15s;
-    }
-
-    .image-indicator.visible {
-      opacity: 1;
-    }
-
-    .back-to-top {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      background: #fff;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,.15);
-      font-size: .85rem;
-      z-index: 60;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(8px);
-      transition: opacity .2s, transform .2s;
-    }
-
-    .back-to-top.visible {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 50;
-    }
-
-    .modal.show {
-      display: flex;
-    }
-
-    .modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,.7);
-    }
-
-    .modal-content {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    #modalImage {
-      max-width: 100%;
-      max-height: 100%;
-      touch-action: none;
-      transform-origin: center center;
-      user-select: none;
-      -webkit-user-select: none;
-      -webkit-touch-callout: none;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      border: none;
-      background: rgba(17,24,39,.75);
-      color: #fff;
-      font-size: 1.4rem;
-      cursor: pointer;
-    }
-
-    .modal-indicator {
-      position: absolute;
-      left: 16px;
-      top: 16px;
-      background: rgba(17,24,39,.85);
-      color: #fff;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: .8rem;
-      font-weight: 600;
-    }
-
-    footer {
-      max-width: 600px;
-      margin: 40px auto 16px;
-      padding-left: 12px;
-      font-size: 0.85rem;
-      color: #6b7280;
-    }
-
-    footer a {
-      color: #6b7280;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script type="module" src="assets/js/app.js"></script>
 </head>
 
 <body>
-  <header>
+  <header class="kepala">
     <h1>Asih Dwipa Incense - Price Katalog</h1>
-    <p>Katalog dupa wangi Asih Dwipa Incense</p>
+    <p>Katalog dupa wangi Asih Dwipa Incense · <a href="#pemesanan">Cara pesan</a></p>
   </header>
 
-  <main class="gallery">
-    <div class="gallery-item"><span class="image-indicator">1 / 11</span><img src="image/1.png" alt="Katalog 1" data-index="1"></div>
-    <div class="gallery-item"><span class="image-indicator">2 / 11</span><img src="image/2.png" alt="Katalog 2" data-index="2"></div>
-    <div class="gallery-item"><span class="image-indicator">3 / 11</span><img src="image/3.png" alt="Katalog 3" data-index="3"></div>
-    <div class="gallery-item"><span class="image-indicator">4 / 11</span><img src="image/4.png" alt="Katalog 4" data-index="4"></div>
-    <div class="gallery-item"><span class="image-indicator">5 / 11</span><img src="image/5.png" alt="Katalog 5" data-index="5"></div>
-    <div class="gallery-item"><span class="image-indicator">6 / 11</span><img src="image/6.png" alt="Katalog 6" data-index="6"></div>
-    <div class="gallery-item"><span class="image-indicator">7 / 11</span><img src="image/7.png" alt="Katalog 7" data-index="7"></div>
-    <div class="gallery-item"><span class="image-indicator">8 / 11</span><img src="image/8.png" alt="Katalog 8" data-index="8"></div>
-    <div class="gallery-item"><span class="image-indicator">9 / 11</span><img src="image/9.png" alt="Katalog 9" data-index="9"></div>
-    <div class="gallery-item"><span class="image-indicator">10 / 11</span><img src="image/10.png" alt="Katalog 10" data-index="10"></div>
-    <div class="gallery-item"><span class="image-indicator">11 / 11</span><img src="image/11.png" alt="Katalog 11" data-index="11"></div>
+  <main class="halaman">
+    <img class="sampul" src="assets/img/sampul.jpg" alt="Asih Dwipa Incense — Price Catalogue" width="1000" height="1250" />
+
+    <div id="katalog" class="katalog" aria-live="polite">
+      <p class="memuat">Memuat katalog…</p>
+    </div>
+
+    <section id="pemesanan" class="pemesanan">
+      <h2>Ketentuan Pemesanan</h2>
+      <p>Jika anda tertarik untuk membeli, silahkan ikuti langkah pemesanan berikut.</p>
+      <ol>
+        <li>
+          Kirim pesan WA ke nomor kontak kami dengan format pemesanan.
+          <pre class="format-pesan">Nama :
+Pesanan &amp; Jumlah :
+Pick Up/Delivery :
+Alamat (khusus delivery) :</pre>
+        </li>
+        <li>Free Delivery sekitaran kota Singaraja</li>
+        <li>Kami melayani Cash on Delivery (COD) dan juga pembayaran transfer.</li>
+      </ol>
+
+      <h3>Hubungi Kontak Kami</h3>
+      <ul class="kontak">
+        <li><a class="tombol-wa" href="https://wa.me/6281338752652?text=Halo%20Asih%20Dwipa%2C%20saya%20ingin%20memesan.%0ANama%20%3A%0APesanan%20%26%20Jumlah%20%3A%0APick%20Up%2FDelivery%20%3A%0AAlamat%20(khusus%20delivery)%20%3A" target="_blank" rel="noopener">081338752652 <span>(Sumiarsih)</span></a></li>
+        <li><a class="tombol-wa" href="https://wa.me/6282144646225?text=Halo%20Asih%20Dwipa%2C%20saya%20ingin%20memesan.%0ANama%20%3A%0APesanan%20%26%20Jumlah%20%3A%0APick%20Up%2FDelivery%20%3A%0AAlamat%20(khusus%20delivery)%20%3A" target="_blank" rel="noopener">082144646225 <span>(Satya)</span></a></li>
+        <li><a class="tombol-wa" href="https://wa.me/6281236734839?text=Halo%20Asih%20Dwipa%2C%20saya%20ingin%20memesan.%0ANama%20%3A%0APesanan%20%26%20Jumlah%20%3A%0APick%20Up%2FDelivery%20%3A%0AAlamat%20(khusus%20delivery)%20%3A" target="_blank" rel="noopener">081236734839 <span>(Pratiwi)</span></a></li>
+      </ul>
+    </section>
   </main>
 
-  <footer>
+  <footer class="kaki">
     <a href="https://gungsatya.github.io" target="_blank" rel="noopener">Vibe code by Gung Satya</a>
   </footer>
 
-  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});">Back to Top</button>
+  <button class="back-to-top" type="button">Back to Top</button>
 
   <div class="modal" id="imageModal">
     <div class="modal-backdrop" id="modalBackdrop"></div>
     <div class="modal-content">
-      <span class="modal-indicator" id="modalIndicator">1 / 11</span>
-      <img id="modalImage" src="" alt="Preview katalog" />
-      <button class="modal-close" id="modalClose">&times;</button>
+      <img id="modalImage" alt="Pratinjau foto" />
+      <button class="modal-close" id="modalClose" type="button" aria-label="Tutup">&times;</button>
     </div>
   </div>
-
-  <script>
-  (function(){
-    const imgs = document.querySelectorAll('.gallery-item img');
-    const firstItem = document.querySelector('.gallery-item');
-    const backToTopBtn = document.querySelector('.back-to-top');
-
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
-    const modalIndicator = document.getElementById('modalIndicator');
-    const modalBackdrop = document.getElementById('modalBackdrop');
-    const modalClose = document.getElementById('modalClose');
-
-    let curScale = 1;
-    let curX = 0;
-    let curY = 0;
-    let startX = 0;
-    let startY = 0;
-    let initScale = 1;
-    let initDist = 0;
-    let isPan = false;
-
-    const apply = () => {
-      modalImg.style.transform = `translate(${curX}px, ${curY}px) scale(${curScale})`;
-    };
-
-    const reset = () => {
-      curScale = 1;
-      curX = 0;
-      curY = 0;
-      apply();
-    };
-
-    const dist = (t1, t2) => {
-      return Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
-    };
-
-    function openModal(src, index) {
-      modalImg.src = src;
-      modalIndicator.textContent = `${index} / 11`;
-      reset();
-      modal.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      modal.classList.remove('show');
-      modalImg.src = '';
-      document.body.style.overflow = '';
-    }
-
-    modalBackdrop.onclick = closeModal;
-    modalClose.onclick = closeModal;
-
-    document.onkeydown = e => {
-      if (e.key === 'Escape') closeModal();
-    };
-
-    // Pinch zoom + pan di dalam modal
-    modalImg.addEventListener('touchstart', e => {
-      if (e.touches.length === 2) {
-        e.preventDefault();
-        initDist = dist(e.touches[0], e.touches[1]);
-        initScale = curScale;
-        isPan = false;
-      } else if (e.touches.length === 1 && curScale > 1) {
-        isPan = true;
-        startX = e.touches[0].clientX - curX;
-        startY = e.touches[0].clientY - curY;
-      }
-    }, { passive: false });
-
-    modalImg.addEventListener('touchmove', e => {
-      if (e.touches.length === 2) {
-        e.preventDefault();
-
-        const newDist = dist(e.touches[0], e.touches[1]);
-        curScale = Math.min(4, Math.max(1, initScale * (newDist / initDist)));
-
-        if (curScale === 1) {
-          curX = 0;
-          curY = 0;
-        }
-
-        apply();
-      } else if (e.touches.length === 1 && isPan && curScale > 1) {
-        e.preventDefault();
-
-        curX = e.touches[0].clientX - startX;
-        curY = e.touches[0].clientY - startY;
-
-        apply();
-      }
-    }, { passive: false });
-
-    modalImg.addEventListener('touchend', () => {
-      isPan = false;
-
-      if (curScale <= 1.02) {
-        curScale = 1;
-        curX = 0;
-        curY = 0;
-        apply();
-      }
-    });
-
-    // Gallery image interaction
-    // Zoom modal hanya terbuka saat double tap yang benar-benar jelas.
-    // Scroll kecil / geser jari tidak akan membuka modal.
-    imgs.forEach(img => {
-      const indicator = img.previousElementSibling;
-
-      let timer;
-      let lastTap = 0;
-      let touchStartX = 0;
-      let touchStartY = 0;
-      let moved = false;
-
-      const DOUBLE_TAP_DELAY = 450;
-      const MOVE_TOLERANCE = 18;
-      const LONG_PRESS_DELAY = 500;
-
-      img.addEventListener('touchstart', e => {
-        if (!e.touches || e.touches.length !== 1) return;
-
-        moved = false;
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-
-        timer = setTimeout(() => {
-          indicator.classList.add('visible');
-        }, LONG_PRESS_DELAY);
-      }, { passive: true });
-
-      img.addEventListener('touchmove', e => {
-        if (!e.touches || e.touches.length !== 1) return;
-
-        const dx = Math.abs(e.touches[0].clientX - touchStartX);
-        const dy = Math.abs(e.touches[0].clientY - touchStartY);
-
-        if (dx > MOVE_TOLERANCE || dy > MOVE_TOLERANCE) {
-          moved = true;
-          clearTimeout(timer);
-          indicator.classList.remove('visible');
-        }
-      }, { passive: true });
-
-      img.addEventListener('touchend', e => {
-        clearTimeout(timer);
-        indicator.classList.remove('visible');
-
-        if (moved) {
-          lastTap = 0;
-          return;
-        }
-
-        const now = Date.now();
-
-        if (lastTap && now - lastTap < DOUBLE_TAP_DELAY) {
-          e.preventDefault();
-          openModal(img.src, img.dataset.index);
-          lastTap = 0;
-        } else {
-          lastTap = now;
-        }
-      }, { passive: false });
-
-      img.addEventListener('touchcancel', () => {
-        clearTimeout(timer);
-        indicator.classList.remove('visible');
-        moved = false;
-      });
-
-      img.addEventListener('dblclick', e => {
-        e.preventDefault();
-        openModal(img.src, img.dataset.index);
-      });
-    });
-
-    // Back-to-top visible jika gambar pertama tidak kelihatan
-    if ('IntersectionObserver' in window && firstItem) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          backToTopBtn.classList.toggle('visible', !entry.isIntersecting);
-        });
-      }, { threshold: 0.6 });
-
-      observer.observe(firstItem);
-    } else {
-      window.onscroll = () => {
-        backToTopBtn.classList.toggle('visible', window.scrollY > 200);
-      };
-    }
-  })();
-  </script>
 </body>
 </html>
