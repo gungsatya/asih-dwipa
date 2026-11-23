@@ -46,3 +46,34 @@ test('setiap produk punya deskripsi dan minimal satu harga', () => {
     assert.ok(p.harga.length >= 1, p.id);
   }
 });
+
+import { readFileSync, existsSync } from 'node:fs';
+
+/** Lebar gambar JPEG dari penanda SOF0/SOF2. */
+function lebarJpeg(buf) {
+  assert.equal(buf.readUInt16BE(0), 0xffd8, 'bukan JPEG');
+  let i = 2;
+  while (i < buf.length) {
+    const penanda = buf.readUInt16BE(i);
+    const panjang = buf.readUInt16BE(i + 2);
+    if (penanda === 0xffc0 || penanda === 0xffc2) return buf.readUInt16BE(i + 7);
+    i += 2 + panjang;
+  }
+  throw new Error('penanda SOF tidak ditemukan');
+}
+
+test('setiap foto produk ada, JPEG, lebar 700–900 px, maks 200 KB', () => {
+  for (const p of PRODUK) {
+    assert.ok(existsSync(p.foto), `${p.foto} tidak ada`);
+    const buf = readFileSync(p.foto);
+    const lebar = lebarJpeg(buf);
+    assert.ok(lebar >= 700 && lebar <= 900, `${p.foto} lebar ${lebar}`);
+    assert.ok(buf.length <= 200 * 1024, `${p.foto} ${buf.length} byte`);
+  }
+});
+
+test('sampul ada, JPEG, lebar maks 1100 px, maks 200 KB', () => {
+  const buf = readFileSync('assets/img/sampul.jpg');
+  assert.ok(lebarJpeg(buf) <= 1100);
+  assert.ok(buf.length <= 200 * 1024);
+});
